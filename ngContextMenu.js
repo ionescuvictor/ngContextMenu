@@ -1,8 +1,8 @@
 ﻿/**
     * @module ngContextMenu
     * @author Ionescu victor
-    * @link https://github.com/ionescuvictor
-    *
+    * @profilelink https://github.com/ionescuvictor
+    * @projectlink https://github.com/ionescuvictor/ngContextMenu
 
     * @ I was inspired by Adam Timberlake contextmenu plugin.
     * @ https://github.com/Wildhoney
