@@ -185,6 +185,19 @@ function contextMenuDirective($http, $timeout, $interpolate, $compile, contextMe
             element.bind(attributes.contextEvent || 'contextmenu', render);
 
 
+           if (model) {
+
+               var listener = function listener() {
+                   return model.$modelValue;
+               };
+
+               // Listen for updates to the model...
+               scope.$watch(listener, function modelChanged() {
+                   render({}, 'replaceWith');
+               }, true);
+
+           }
+
             //cleanup
             scope.$on("$destroy", function () {
                 document.removeEventListener('click');
