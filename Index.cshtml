@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="~/Scripts/ngContextMenu.js"></script>
+
+<script type="text/javascript">
+
+    var app = angular.module('plunker', ['ngContextMenu']);
+
+    app.controller('MainCtrl', function ($scope) {
+        $scope.items = [
+            { Type: "Folder", id: 1, contextMenu: '/contextmenufolder.html' },
+            { Type: "item", id:   2, contextMenu: '/contextmenuitem.html' },
+            { Type: "item", id:   3, contextMenu: '/contextmenuitem.html' }
+        ];
+
+        $scope.CallBack = function (message, Type) {
+            console.log(message);
+            console.log(Type);
+
+        }
+    });
+
+</script>
+
+<div ng-app="plunker" ng-controller="MainCtrl">
+
+    <div  style="width:800px;height:800px;background-color:grey">
+
+        <ul ng-repeat="item in items">
+
+            <li style="font-size:30px"
+                context-menu
+                contextaction="CallBack"
+                contextmenuvalue="item.contextMenu"
+                ng-model="item"> {{ item.Type }} </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<style>
+    .context-menu {
+        position: absolute;
+        z-index: 10;
+        padding: 12px 0;
+        width: 240px;
+        background-color: #fff;
+        border: solid 1px #dfdfdf;
+        box-shadow: 7px 7px 14px #cfcfcf;
+    }
+
+    .context-menu--active {
+        display: block;
+    }
+
+    .context-menu__items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .context-menu__item {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+        .context-menu__item:last-child {
+            margin-bottom: 0;
+        }
+
+    .context-menu__link {
+        display: block;
+        padding: 4px 12px;
+        color: #0066aa;
+        text-decoration: none;
+    }
+
+        .context-menu__link:hover {
+            color: #fff;
+            background-color: #0066aa;
+        }
+</style>
+
+
+
